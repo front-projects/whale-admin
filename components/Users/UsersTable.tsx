@@ -64,7 +64,7 @@ const UsersTable: React.FC = () => {
     document.addEventListener('touchmove', function(event) {
       event.preventDefault(); // Запобігаємо стандартній поведінці дотиків
     }, { passive: true });
-  },)
+  },[])
 
 
   return (
