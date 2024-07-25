@@ -63,7 +63,7 @@ const UsersTable: React.FC = () => {
 
   return (
     <div
-      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full overflow-hidden"
+      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
       id="container-users"
     >
       <DataGrid
@@ -71,7 +71,7 @@ const UsersTable: React.FC = () => {
         columns={columns}
         rowCount={rowCount}
         loading={loading}
-        className="touch-none"
+        className="touch-none overflow-hidden"
         slots={{
           loadingOverlay: CustomLoadingOverlay,
         }}
@@ -85,7 +85,6 @@ const UsersTable: React.FC = () => {
         }}
         sx={tableStyle}
         onRowClick={handleRowClick}
-        style={{ flexGrow: 1, overflow: "auto" }}
         disableVirtualization={true}
       />
     </div>
