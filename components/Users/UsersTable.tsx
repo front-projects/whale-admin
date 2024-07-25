@@ -68,7 +68,6 @@ const UsersTable: React.FC = () => {
         columns={columns}
         rowCount={rowCount}
         loading={loading}
-        className="pointer-events-none"
         slots={{
           loadingOverlay: CustomLoadingOverlay,
         }}
