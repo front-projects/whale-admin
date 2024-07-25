@@ -49,9 +49,9 @@ const UsersTable: React.FC = () => {
   }, [page]);
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID" },
-    { field: "name", headerName: "Name" },
-    { field: "email", headerName: "Email" },
+    { field: "id", headerName: "ID", },
+    { field: "name", headerName: "Name",minWidth: 140 },
+    { field: "email", headerName: "Email",minWidth: 140 },
   ];
 
   const handlePageChange = (params: GridPaginationModel) => {
