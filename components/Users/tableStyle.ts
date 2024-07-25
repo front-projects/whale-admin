@@ -1,4 +1,6 @@
 export const tableStyle = {
+    width: "100%",
+    height: "100%",
   "& .MuiDataGrid-row": {
     backgroundColor: "inherit",
     border: "none",

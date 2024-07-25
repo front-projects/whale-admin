@@ -71,7 +71,7 @@ const UsersTable: React.FC = () => {
         rows={users}
         columns={columns}
         rowCount={rowCount}
-        className="touch-none"
+        className="fixed"
         loading={loading}
         slots={{
           loadingOverlay: CustomLoadingOverlay,

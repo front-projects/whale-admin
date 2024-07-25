@@ -100,5 +100,9 @@ input:focus:-webkit-autofill {
 }
 
 #container-users *{
-  touch-action: manipulation;
+  touch-action: none;
+}
+
+#container-users{
+  overflow: auto;
 }
