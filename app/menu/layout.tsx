@@ -8,7 +8,7 @@ export default function Layout({
   return (
     <div className="w-screen h-[100dvh]" >
       <Navigation />
-      <div style={{ height: "calc(100% - 72px)" }} className="w-full p-4">
+      <div style={{ height: "calc(100% - 72px)" }} className="w-full p-4 max-sm:p-0">
         {children}
       </div>
       
