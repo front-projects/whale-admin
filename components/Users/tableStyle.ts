@@ -6,13 +6,21 @@ export const tableStyle = {
       backgroundColor: "rgba(139, 92, 246,.1)",
       cursor: "pointer",
     },
-    ":first-of-type":{
-      // borderTop:'none'
-    }
+    ":first-of-type": {
+      borderTop:'none'
+    },
   },
   "& .MuiDataGrid-cell": {
     color: "white",
+    outline: "none",
+    "&:focus": {
+      outline: "none",
+    },
+    "&:focus-within": {
+      outline: "none",
+    },
   },
+
   "& .MuiDataGrid-footerContainer": {
     backgroundColor: "#8B5CF6",
     color: "white",
@@ -23,15 +31,16 @@ export const tableStyle = {
     color: "white",
   },
   "& .MuiDataGrid-overlay": {
-    backgroundColor: "#17181e", 
+    backgroundColor: "#17181e",
     color: "white",
   },
   "& .MuiDataGrid-noRowsOverlay": {
-    backgroundColor: "#17181e", 
+    backgroundColor: "#17181e",
     color: "white",
   },
   "& .MuiDataGrid-loadingOverlay": {
-    backgroundColor: "#17181e", 
+    backgroundColor: "#17181e",
     color: "white",
   },
+ 
 };
