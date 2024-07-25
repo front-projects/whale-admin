@@ -99,7 +99,6 @@ input:focus:-webkit-autofill {
 }
 
 #container-users{
-  pointer-events: none;
-  /* Якщо потрібно, додайте touch-action для дозволу прокручування */
+  
   touch-action: auto;
 }
