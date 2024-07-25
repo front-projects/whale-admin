@@ -53,13 +53,27 @@ const UsersTable: React.FC = () => {
     { field: "name", headerName: "Name" },
     { field: "email", headerName: "Email" },
   ];
+  const preventOverscroll = (e: { preventDefault: () => void; stopPropagation: () => void; }) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
 
+  useEffect(() => {
+    // Додаємо обробники для блокування overscroll
+    document.addEventListener('touchmove', preventOverscroll, { passive: false });
+
+    // Очищення обробників подій
+    return () => {
+      document.removeEventListener('touchmove', preventOverscroll);
+    };
+  }, []);
   const handlePageChange = (params: GridPaginationModel) => {
     setPage(params.page);
   };
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
+  
 
   return (
     <div
