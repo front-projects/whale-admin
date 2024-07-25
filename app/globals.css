@@ -100,5 +100,5 @@ input:focus:-webkit-autofill {
 }
 
 #container-users *{
-  touch-action: pan-y;
+  touch-action: manipulation;
 }
