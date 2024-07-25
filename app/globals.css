@@ -97,3 +97,9 @@ input:focus:-webkit-autofill {
 .css-1oudwrl::after{
   display:none!important;
 }
+
+#container-users{
+  pointer-events: none;
+  /* Якщо потрібно, додайте touch-action для дозволу прокручування */
+  touch-action: auto;
+}
