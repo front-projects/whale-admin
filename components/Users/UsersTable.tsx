@@ -16,7 +16,7 @@ import { useRouter } from "next/navigation";
 const CustomLoadingOverlay = () => {
   return (
     <div className="w-full h-full flex items-center justify-center text-3xl bg-[#17181e]">
-      <HashLoader color="rgb(139, 92, 246)" size={150} />
+      <HashLoader color="rgb(139, 92, 246)" size={130} />
     </div>
   );
 };

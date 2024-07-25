@@ -98,3 +98,6 @@ input:focus:-webkit-autofill {
 #container-users *{
   touch-action: pan-x;
 }
+.css-1oudwrl::after{
+  display:none!important;
+}
