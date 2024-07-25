@@ -59,11 +59,26 @@ const UsersTable: React.FC = () => {
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
-  
+
+  useEffect(() => {
+    const container = document.querySelector(".scroll-container");
+
+    container.addEventListener("scroll", () => {
+      if (
+        container.scrollTop + container.clientHeight >=
+        container.scrollHeight
+      ) {
+        container.scrollTop = container.scrollHeight - container.clientHeight;
+      }
+      if (container.scrollTop <= 0) {
+        container.scrollTop = 0;
+      }
+    });
+  }, []);
 
   return (
     <div
-      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
+      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
       id="container-users"
     >
       <DataGrid
