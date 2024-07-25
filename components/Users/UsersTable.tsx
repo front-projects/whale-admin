@@ -53,18 +53,24 @@ const UsersTable: React.FC = () => {
     { field: "name", headerName: "Name" },
     { field: "email", headerName: "Email" },
   ];
-  const preventOverscroll = (e: { preventDefault: () => void; stopPropagation: () => void; }) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const preventOverscroll = (e: { target: any; preventDefault: () => void; }) => {
+    const target = e.target;
+    if (target.classList.contains('no-overscroll')) {
+      e.preventDefault();
+    }
   };
 
   useEffect(() => {
-    // Додаємо обробники для блокування overscroll
-    document.addEventListener('touchmove', preventOverscroll, { passive: false });
+    const container = document.querySelector('.no-overscroll');
+    if (container) {
+      container.addEventListener('touchmove', preventOverscroll, { passive: false });
+    }
 
-    // Очищення обробників подій
+    // Очищення обробників подій при демонтажі компонента
     return () => {
-      document.removeEventListener('touchmove', preventOverscroll);
+      if (container) {
+        container.removeEventListener('touchmove', preventOverscroll);
+      }
     };
   }, []);
   const handlePageChange = (params: GridPaginationModel) => {
@@ -77,7 +83,7 @@ const UsersTable: React.FC = () => {
 
   return (
     <div
-      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
+      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full no-overscroll"
       id="container-users"
     >
       <DataGrid
