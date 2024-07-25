@@ -61,15 +61,15 @@ const UsersTable: React.FC = () => {
   };
 
   return (
-    <div
-      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
-      id="container-users"
-    >
+    // <div
+    //   className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
+    //   id="container-users"
+    // >
       <DataGrid
         rows={users}
         columns={columns}
         rowCount={rowCount}
-        className="touch-none"
+        className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
         loading={loading}
         slots={{
           loadingOverlay: CustomLoadingOverlay,
@@ -86,7 +86,7 @@ const UsersTable: React.FC = () => {
         onRowClick={handleRowClick}
         disableVirtualization={true}
       />
-    </div>
+    // </div>
   );
 };
 
