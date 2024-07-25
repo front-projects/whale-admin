@@ -6,7 +6,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="w-screen h-screen" >
+    <div className="w-screen h-[100dvh]" >
       <Navigation />
       <div style={{ height: "calc(100% - 72px)" }} className="w-full p-4">
         {children}
