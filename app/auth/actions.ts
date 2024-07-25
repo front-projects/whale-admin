@@ -24,8 +24,8 @@ export async function login(
   // FOR TEAST
   await delay(2000);
   const token = "token";
-  const userId = "userId";
-  await createSession(token);
+  const refresh = "refresh token"
+  await createSession(token, refresh);
 }
 
 export async function logout() {

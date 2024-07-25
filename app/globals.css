@@ -7,26 +7,27 @@
   color: white;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   overflow: hidden;
 }
 
+/* INPUT */
 input {
   background: inherit;
   border: 3px solid #30303d;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
-  padding: .6rem;
+  padding: 0.6rem;
 }
 
-input:focus{
-  border: 3px solid #8B5CF6;
+input:focus {
+  border: 3px solid #8b5cf6;
   outline: none;
 }
 
@@ -34,13 +35,9 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 30px #17181e inset !important;
   -webkit-text-fill-color: white !important;
 }
-
-/* Для браузера Firefox */
 input:autofill {
   background-color: inherit !important;
 }
-
-/* Для браузера Safari */
 input:-webkit-autofill {
   background-color: inherit !important;
   color: white !important;
@@ -51,12 +48,49 @@ input:focus:-webkit-autofill {
   -webkit-text-fill-color: white !important;
 }
 
-input:focus:autofill {
+input:focus:autofill,
+input:focus:-webkit-autofill {
   background-color: #17181e !important;
   color: white !important;
 }
 
-input:focus:-webkit-autofill {
-  background-color: #17181e !important;
-  color: white !important;
+/* SCROLL */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(139, 92, 246);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* DATA-GRID MUI */
+
+.MuiDataGrid-root {
+  border: none !important;
+}
+.MuiDataGrid-columnHeader,
+.MuiDataGrid-filler,
+.MuiDataGrid-scrollbarFiller--header {
+  background-color: rgb(139, 92, 246);
+  color: white;
+}
+
+.MuiTablePagination-input,
+.MuiTablePagination-selectLabel {
+  display: none !important;
+}
+
+.MuiDataGrid-virtualScrollerRenderZone{
+  border:none!important;
 }

@@ -15,7 +15,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  verifySession();
   return (
     <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>{children}</body>
