@@ -76,6 +76,7 @@ const UsersTable: React.FC = () => {
         }}
         disableRowSelectionOnClick={true}
         pagination
+        className="touch-none"
         autosizeOnMount={true}
         paginationMode="server"
         paginationModel={{ page, pageSize }}
