@@ -97,3 +97,10 @@ input:focus:-webkit-autofill {
 .css-1oudwrl::after{
   display:none!important;
 }
+
+#container-users {
+  -webkit-user-drag: none!important;
+  user-drag: none!important;
+  -webkit-touch-callout: none!important;
+  -webkit-tap-highlight-color: transparent!important;
+}
