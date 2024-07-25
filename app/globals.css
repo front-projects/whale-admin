@@ -95,14 +95,6 @@ input:focus:-webkit-autofill {
   border: none !important;
 }
 
-#container-users {
-  touch-action: auto;
-}
-
-#container-users * {
-  touch-action: none;
-}
-
-#container-users .MuiDataGrid-root {
-  touch-action: pan-x pan-y;
+#container-users *{
+  touch-action: pan-x;
 }
