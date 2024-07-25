@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   DataGrid,
   GridColDef,
@@ -28,7 +28,7 @@ const UsersTable: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(50);
   const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
-
+  const elementRef = useRef(null);
   useEffect(() => {
     const delay = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
@@ -48,6 +48,20 @@ const UsersTable: React.FC = () => {
     fetchData();
   }, [page]);
 
+  useEffect(() => {
+    const element = elementRef.current;
+
+    if (element) {
+      element.style.touchAction = 'none';
+    }
+
+    return () => {
+      if (element) {
+        element.style.touchAction = '';
+      }
+    };
+  }, []);
+
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID",minWidth: 140  },
     { field: "name", headerName: "Name",minWidth: 140 },
@@ -65,6 +79,7 @@ const UsersTable: React.FC = () => {
     <div
       className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
       id="container-users"
+      ref={elementRef}
     >
       <DataGrid
         rows={users}
