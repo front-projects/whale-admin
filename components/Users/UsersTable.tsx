@@ -59,6 +59,7 @@ const UsersTable: React.FC = () => {
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
+  
 
   return (
     <div
