@@ -51,22 +51,7 @@ const UsersTable: React.FC = () => {
     { field: "id", headerName: "ID", minWidth: 140 },
     { field: "name", headerName: "Name", minWidth: 140 },
     { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
+  
   ];
 
   const handlePageChange = (params: GridPaginationModel) => {

@@ -62,16 +62,17 @@ input:focus:-webkit-autofill {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #ffffff;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(98, 37, 240);
+  background: rgb(61, 7, 52);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #2e0420;
+  cursor: pointer;
 }
 
 /* DATA-GRID MUI */
@@ -96,4 +97,8 @@ input:focus:-webkit-autofill {
 }
 .css-1oudwrl::after{
   display:none!important;
+}
+
+#container-users *{
+  touch-action: pan-y;
 }
