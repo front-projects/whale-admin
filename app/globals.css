@@ -96,7 +96,11 @@ input:focus:-webkit-autofill {
 }
 
 #container-users {
-  touch-action: none;
+  touch-action: none!important;
   user-select: none;
   -webkit-user-drag: none;
+}
+
+#container-users * {
+  -webkit-user-drag: none!important; /* Вимикає перетягування для всіх дочірніх елементів */
 }
