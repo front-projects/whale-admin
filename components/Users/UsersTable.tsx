@@ -65,12 +65,12 @@ const UsersTable: React.FC = () => {
     <div
       className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
       id="container-users"
-      style={{ touchAction: "none", WebkitOverflowScrolling: "auto" }}
     >
       <DataGrid
         rows={users}
         columns={columns}
         rowCount={rowCount}
+        className="touch-none"
         loading={loading}
         slots={{
           loadingOverlay: CustomLoadingOverlay,
