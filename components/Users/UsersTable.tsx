@@ -49,9 +49,9 @@ const UsersTable: React.FC = () => {
   }, [page]);
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 90 },
-    { field: "name", headerName: "Name", width: 150 },
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "id", headerName: "ID" },
+    { field: "name", headerName: "Name" },
+    { field: "email", headerName: "Email" },
   ];
 
   const handlePageChange = (params: GridPaginationModel) => {
@@ -62,7 +62,10 @@ const UsersTable: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full" id="container-users">
+    <div
+      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full"
+      id="container-users"
+    >
       <DataGrid
         rows={users}
         columns={columns}
@@ -73,6 +76,7 @@ const UsersTable: React.FC = () => {
         }}
         disableRowSelectionOnClick={true}
         pagination
+        autosizeOnMount={true}
         paginationMode="server"
         paginationModel={{ page, pageSize }}
         onPaginationModelChange={(params) => {
@@ -80,6 +84,7 @@ const UsersTable: React.FC = () => {
         }}
         sx={tableStyle}
         onRowClick={handleRowClick}
+        disableVirtualization={true}
       />
     </div>
   );
