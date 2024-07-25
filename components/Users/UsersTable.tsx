@@ -71,6 +71,7 @@ const UsersTable: React.FC = () => {
         slots={{
           loadingOverlay: CustomLoadingOverlay,
         }}
+        disableRowSelectionOnClick={true}
         pagination
         paginationMode="server"
         paginationModel={{ page, pageSize }}
