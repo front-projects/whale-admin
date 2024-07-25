@@ -48,21 +48,6 @@ const UsersTable: React.FC = () => {
     fetchData();
   }, [page]);
 
-  useEffect(() => {
-    const disableDragEvents = (event: { preventDefault: () => void; }) => {
-      event.preventDefault();
-    };
-    // Встановлюємо обробники подій на документ
-    document.addEventListener('dragstart', disableDragEvents);
-    document.addEventListener('dragover', disableDragEvents);
-
-    // Очищуємо обробники подій при демонтажі компонента
-    return () => {
-      document.removeEventListener('dragstart', disableDragEvents);
-      document.removeEventListener('dragover', disableDragEvents);
-    };
-  }, []);
-
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 90 },
     { field: "name", headerName: "Name", width: 150 },
@@ -83,6 +68,7 @@ const UsersTable: React.FC = () => {
         columns={columns}
         rowCount={rowCount}
         loading={loading}
+        className="pointer-events-none"
         slots={{
           loadingOverlay: CustomLoadingOverlay,
         }}
