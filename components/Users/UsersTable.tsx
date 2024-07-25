@@ -60,6 +60,11 @@ const UsersTable: React.FC = () => {
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
+  useEffect(()=>{
+    document.addEventListener('touchmove', function(event) {
+      event.preventDefault(); // Запобігаємо стандартній поведінці дотиків
+    }, { passive: true });
+  },)
 
 
   return (
