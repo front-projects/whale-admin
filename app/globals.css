@@ -99,10 +99,13 @@ input:focus:-webkit-autofill {
   display:none!important;
 }
 
-#container-users *{
+.MuiDataGrid-root{
   touch-action: none;
 }
 
 #container-users{
   overflow: auto;
+}
+.MuiDataGrid-virtualScrollerRenderZone{
+  touch-action: auto!important;
 }
