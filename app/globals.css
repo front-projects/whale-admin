@@ -98,3 +98,7 @@ input:focus:-webkit-autofill {
 .css-1oudwrl::after {
   display: none !important;
 }
+
+#container-users{
+  -webkit-overflow-scrolling: touch;
+}
