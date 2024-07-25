@@ -95,17 +95,6 @@ input:focus:-webkit-autofill {
 .MuiDataGrid-virtualScrollerRenderZone {
   border: none !important;
 }
-.css-1oudwrl::after{
-  display:none!important;
-}
-
-.MuiDataGrid-root{
-  touch-action: none;
-}
-
-#container-users{
-  overflow: auto;
-}
-.MuiDataGrid-virtualScrollerRenderZone{
-  touch-action: auto!important;
+.css-1oudwrl::after {
+  display: none !important;
 }

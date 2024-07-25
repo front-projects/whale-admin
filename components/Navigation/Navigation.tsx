@@ -25,7 +25,7 @@ export default function Navigation() {
         className="w-screen flex items-center justify-around py-2 h-[72px]"
         id="navigation"
       >
-        <Link href='/menu'>HOME</Link>
+        <Link href='/menu/home'>HOME</Link>
         <Link href='/menu/users'>USERS</Link>
         <button onClick={() => logout()}>Logout</button>
       </nav>
