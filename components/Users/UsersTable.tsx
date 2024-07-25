@@ -62,7 +62,7 @@ const UsersTable: React.FC = () => {
   };
 
   return (
-    <div className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full">
+    <div className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full" id="container-users">
       <DataGrid
         rows={users}
         columns={columns}
