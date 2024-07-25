@@ -53,33 +53,13 @@ const UsersTable: React.FC = () => {
     { field: "name", headerName: "Name" },
     { field: "email", headerName: "Email" },
   ];
-  const preventOverscroll = (e: { target: any; preventDefault: () => void; }) => {
-    const target = e.target;
-    if (target.classList.contains('no-overscroll')) {
-      e.preventDefault();
-    }
-  };
 
-  useEffect(() => {
-    const container = document.querySelector('.no-overscroll');
-    if (container) {
-      container.addEventListener('touchmove', preventOverscroll, { passive: false });
-    }
-
-    // Очищення обробників подій при демонтажі компонента
-    return () => {
-      if (container) {
-        container.removeEventListener('touchmove', preventOverscroll);
-      }
-    };
-  }, []);
   const handlePageChange = (params: GridPaginationModel) => {
     setPage(params.page);
   };
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
-  
 
   return (
     <div
@@ -96,7 +76,7 @@ const UsersTable: React.FC = () => {
         }}
         disableRowSelectionOnClick={true}
         pagination
-        className="touch-none"
+        className="touch-none overscroll-none"
         autosizeOnMount={true}
         paginationMode="server"
         paginationModel={{ page, pageSize }}
