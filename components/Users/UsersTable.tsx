@@ -51,6 +51,22 @@ const UsersTable: React.FC = () => {
     { field: "id", headerName: "ID", minWidth: 140 },
     { field: "name", headerName: "Name", minWidth: 140 },
     { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
+    { field: "name", headerName: "Name", minWidth: 140 },
+    { field: "email", headerName: "Email", minWidth: 140 },
   ];
 
   const handlePageChange = (params: GridPaginationModel) => {
@@ -60,16 +76,17 @@ const UsersTable: React.FC = () => {
     router.push(`/menu/users/${params.row.id}`);
   };
 
+
   return (
-    // <div
-    //   className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
-    //   id="container-users"
-    // >
+    <div
+      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
+      id="container-users"
+    >
       <DataGrid
         rows={users}
         columns={columns}
         rowCount={rowCount}
-        className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
+        className="touch-none"
         loading={loading}
         slots={{
           loadingOverlay: CustomLoadingOverlay,
@@ -86,7 +103,7 @@ const UsersTable: React.FC = () => {
         onRowClick={handleRowClick}
         disableVirtualization={true}
       />
-    // </div>
+    </div>
   );
 };
 
