@@ -91,10 +91,12 @@ input:focus:-webkit-autofill {
   display: none !important;
 }
 
-.MuiDataGrid-virtualScrollerRenderZone{
-  border:none!important;
+.MuiDataGrid-virtualScrollerRenderZone {
+  border: none !important;
 }
 
-#container-users{
+#container-users {
   touch-action: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
