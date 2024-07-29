@@ -1,4 +1,26 @@
-import { FetchUsersProps, FetchUsersResponse } from "./types";
+"use server";
+
+// import axios from "axios";
+import { FetchUsersProps, FetchUsersResponse } from "@/components/Users/types";
+
+// export const getUsers = async (
+//   fetch: FetchUsersProps
+// ): Promise<FetchUsersResponse> => {
+//   const URL = process.env.NEXT_PUBLIC_API_URL;
+//   try {
+//     const response = await axios.get(URL + "/api/users");
+//   } catch {
+//     throw new Error("Error fetching data");
+//   }
+//   return {
+//     users: [
+//       { id: 1, name: "Vlad", email: "Test" },
+//       { id: 2, name: "Vlad", email: "Test" },
+//       { id: 3, name: "Vlad", email: "Test" },
+//     ],
+//     totalUsers: 100,
+//   };
+// };
 
 export const getUsers = async (
   fetch: FetchUsersProps
@@ -59,7 +81,7 @@ export const getUsers = async (
       ],
       totalUsers: 100,
     };
-    
+
   }
   return {
     users: [
@@ -113,7 +135,7 @@ export const getUsers = async (
       { id: 98, name: "Vlad", email: "Test" },
       { id: 99, name: "Vlad", email: "Test" },
       { id: 100, name: "Vlad", email: "Test" },
-     
+
     ],
     totalUsers: 100,
   };

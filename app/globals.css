@@ -102,3 +102,6 @@ input:focus:-webkit-autofill {
 #container-users{
   -webkit-overflow-scrolling: touch;
 }
+.MuiDataGrid-columnHeader + .MuiDataGrid-filler{
+  background-color: rgb(139, 92, 246)!important;
+}

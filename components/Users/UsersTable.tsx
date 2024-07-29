@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import {
   DataGrid,
   GridColDef,
   GridPaginationModel,
   GridRowParams,
 } from "@mui/x-data-grid";
-import { getUsers } from "./actions";
+import { getUsers } from "@/lib/requests";
 import { User } from "./types";
 import { tableStyle } from "./tableStyle";
 import { HashLoader } from "react-spinners";
@@ -24,11 +24,14 @@ const CustomLoadingOverlay = () => {
 const UsersTable: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
   const [pageSize, setPageSize] = useState<number>(50);
   const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
+
   useEffect(() => {
+    const URL = process.env.NEXT_PUBLIC_API_URL;
     const delay = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
     const fetchData = async () => {
@@ -39,7 +42,7 @@ const UsersTable: React.FC = () => {
         setUsers(fetchedUsers.users);
         setRowCount(fetchedUsers.totalUsers);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        setError(true)
       }
       setLoading(false);
     };
@@ -51,7 +54,6 @@ const UsersTable: React.FC = () => {
     { field: "id", headerName: "ID", minWidth: 140 },
     { field: "name", headerName: "Name", minWidth: 140 },
     { field: "email", headerName: "Email", minWidth: 140 },
-  
   ];
 
   const handlePageChange = (params: GridPaginationModel) => {
@@ -60,7 +62,6 @@ const UsersTable: React.FC = () => {
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
-
 
   return (
     <div
@@ -71,7 +72,9 @@ const UsersTable: React.FC = () => {
         rows={users}
         columns={columns}
         rowCount={rowCount}
-        className="fixed"
+        localeText={{
+          noRowsLabel: error ? "Users upload error" : "No users"
+        }}
         loading={loading}
         slots={{
           loadingOverlay: CustomLoadingOverlay,

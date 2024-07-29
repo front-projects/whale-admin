@@ -23,6 +23,10 @@ export const tableStyle = {
       outline: "none",
     },
   },
+  ".MuiDataGrid-filler":{
+    backgroundColor: "#17181e",
+    color: "white",
+  },
 
   "& .MuiDataGrid-footerContainer": {
     backgroundColor: "#8B5CF6",
@@ -41,6 +45,7 @@ export const tableStyle = {
     backgroundColor: "#17181e",
     color: "white",
   },
+ 
   "& .MuiDataGrid-loadingOverlay": {
     backgroundColor: "#17181e",
     color: "white",
