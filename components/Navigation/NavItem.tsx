@@ -17,10 +17,10 @@ const NavItem: React.FC<NavItemProps> = ({ children, href }) => {
       className={`
         p-2 px-10 rounded-xl shadow-xl text-center
         ${
-        pathname.startsWith(href)
-          ? "hover:bg-gradient-to-r hover:from-violet-800/70 hover:to-violet-500/60 bg-gradient-to-r from-violet-500 to-violet-800 "
-          : "border-2 hover:bg-gray-600/50"
-      }`}
+          pathname.startsWith(href)
+            ? "hover:bg-gradient-to-r hover:from-violet-800/70 hover:to-violet-500/60 bg-gradient-to-r from-violet-500 to-violet-800 "
+            : "border-2 hover:bg-gray-600/50"
+        }`}
       href={href}
     >
       {children}

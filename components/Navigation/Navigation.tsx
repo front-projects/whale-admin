@@ -38,20 +38,21 @@ export default function Navigation() {
     <div ref={wrapper}>
       {/* PC */}
       <nav
-        className="w-screen flex items-center justify-around py-2 h-[72px] max-sm:hidden"
+        className="w-screen flex items-center justify-center py-2 h-[72px] max-md:hidden relative max-lg:justify-start px-2"
         id="navigation"
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 max-lg:gap-1">
           <NavItem href="/menu/users">USERS</NavItem>
-          <NavItem href="/menu/logs">DEPOSITS</NavItem>
-          <NavItem href="/menu/logs">LOTTERY</NavItem>
-          <NavItem href="/menu/logs">LOGS</NavItem>
+          <NavItem href="/menu/top-users">TOP USERS</NavItem>
+          <NavItem href="/menu/withdraw">WITHDRAW</NavItem>
+          <NavItem href="/menu/deposits">DEPOSITS</NavItem>
+          {/* <NavItem href="/menu/logs">LOTTERY</NavItem> */}
         </div>
 
         <LogOutIcon />
       </nav>
       {/* MOBILE */}
-      <div className="h-[72px] flex items-center justify-center px-4 sm:hidden relative">
+      <div className="h-[72px] flex items-center justify-center px-4 md:hidden relative">
         <GiHamburgerMenu
           className="text-[200%] absolute left-4"
           onClick={() => setIsOpen(true)}
@@ -64,16 +65,21 @@ export default function Navigation() {
       >
         <div
           className="h-full w-[80%] bg-[#17181e] flex flex-col px-2 gap-2 py-4"
-          onClick={(e) => e.stopPropagation()}
+          onClick={(e) => {
+            setIsOpen(false);
+            e.stopPropagation();
+          }}
         >
           <div className="w-full text-end flex justify-end text-[200%] p-2">
             <SlClose onClick={() => setIsOpen(false)} />
           </div>
 
           <NavItem href="/menu/users">USERS</NavItem>
-          <NavItem href="/menu/logs">DEPOSITS</NavItem>
-          <NavItem href="/menu/logs">LOTTERY</NavItem>
-          <NavItem href="/menu/logs">LOGS</NavItem>
+          <NavItem href="/menu/top-users">TOP USERS</NavItem>
+          <NavItem href="/menu/withdraw">WITHDRAW</NavItem>
+          <NavItem href="/menu/deposits">DEPOSITS</NavItem>
+          {/* <NavItem href="/menu/logs">LOTTERY</NavItem> */}
+          <div className="mt-10"></div>
           <LogOutIcon />
         </div>
       </nav>

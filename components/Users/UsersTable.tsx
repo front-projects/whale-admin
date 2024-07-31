@@ -1,17 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  DataGrid,
-  GridColDef,
-  GridPaginationModel,
-  GridRowParams,
-} from "@mui/x-data-grid";
+import { DataGrid, GridPaginationModel, GridRowParams } from "@mui/x-data-grid";
 import { getUsers } from "@/lib/requests";
 import { User } from "./types";
 import { tableStyle } from "./tableStyle";
 import { HashLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
+import { columnsUsers } from "./columnsUsers";
 
 const CustomLoadingOverlay = () => {
   return (
@@ -42,19 +38,13 @@ const UsersTable: React.FC = () => {
         setUsers(fetchedUsers.users);
         setRowCount(fetchedUsers.totalUsers);
       } catch (error) {
-        setError(true)
+        setError(true);
       }
       setLoading(false);
     };
 
     fetchData();
   }, [page]);
-
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", minWidth: 140 },
-    { field: "name", headerName: "Name", minWidth: 140 },
-    { field: "email", headerName: "Email", minWidth: 140 },
-  ];
 
   const handlePageChange = (params: GridPaginationModel) => {
     setPage(params.page);
@@ -63,6 +53,7 @@ const UsersTable: React.FC = () => {
     router.push(`/menu/users/${params.row.id}`);
   };
 
+
   return (
     <div
       className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
@@ -70,10 +61,10 @@ const UsersTable: React.FC = () => {
     >
       <DataGrid
         rows={users}
-        columns={columns}
+        columns={columnsUsers}
         rowCount={rowCount}
         localeText={{
-          noRowsLabel: error ? "Users upload error" : "No users"
+          noRowsLabel: error ? "Users upload error" : "No users",
         }}
         loading={loading}
         slots={{

@@ -30,7 +30,7 @@ export function LoginForm() {
       className="w-max max-sm:pb-36 items-center flex justify-center"
       ref={container}
     >
-      <div className="flex flex-col items-center gap-4 p-16 bg-gray-600/10 rounded-xl login-form max-sm:w-[90%]">
+      <div className="flex flex-col items-center gap-4 p-16 bg-gray-600/10 rounded-xl login-form max-sm:w-[100%]">
         <h1 className="text-2xl font-bold p-4">LOGIN</h1>
         <input
           id="email"
