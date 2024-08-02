@@ -1,21 +1,33 @@
 import { GridColDef } from "@mui/x-data-grid";
-
-const arr = ["123", "1234"];
+import dayjs from "dayjs";
 
 export const columnsUsers: GridColDef[] = [
   //   { field: "id", headerName: "ID", minWidth: 140 },
-  { field: "name", headerName: "Name", minWidth: 140 },
-  { field: "email", headerName: "Email", minWidth: 140 },
+  { field: "login", headerName: "Login", minWidth: 200 },
+  { field: "name", headerName: "Name", minWidth: 200 },
   {
-    field: "balanceAmount",
-    headerName: "Balance",
-    minWidth: 140,
-    renderCell: (params) => params.value.toFixed(2) + " $",
+    field: "createdAt",
+    headerName: "Registration",
+    minWidth: 200,
+    renderCell: (params) => dayjs(params.value).format("DD/MM/YYYY"),
   },
   {
-    field: "investModels",
-    headerName: "Level 1",
-    minWidth: 140,
-    renderCell: (params: any) => params.row.investModels[0].id,
+    field: "upperReferralLogin",
+    headerName: "Referral",
+    minWidth: 200,
+    renderCell: (params) => <div onClick={(e)=> e.stopPropagation()}>{params.value}</div>,
   },
+
+  // {
+  //   field: "balanceAmount",
+  //   headerName: "Balance",
+  //   minWidth: 140,
+  //   renderCell: (params) => params.value.toFixed(2) + " $",
+  // },
+  // {
+  //   field: "investModels",
+  //   headerName: "Level 1",
+  //   minWidth: 140,
+  //   renderCell: (params: any) => params.row.investModels[0].id,
+  // },
 ];

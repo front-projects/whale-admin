@@ -15,6 +15,7 @@
 
 body {
   overflow: hidden;
+  border: gray;
 }
 
 /* INPUT */

@@ -38,10 +38,11 @@ export default function Navigation() {
     <div ref={wrapper}>
       {/* PC */}
       <nav
-        className="w-screen flex items-center justify-center py-2 h-[72px] max-md:hidden relative max-lg:justify-start px-2"
+        className="w-screen flex items-center justify-center py-2 h-[72px] max-md:hidden relative max-[1140px]:justify-start px-2"
         id="navigation"
       >
         <div className="flex items-center gap-4 max-lg:gap-1">
+          <NavItem href="/menu/lottery">LOTTERIES</NavItem>
           <NavItem href="/menu/users">USERS</NavItem>
           <NavItem href="/menu/top-users">TOP USERS</NavItem>
           <NavItem href="/menu/withdraw">WITHDRAW</NavItem>
@@ -73,7 +74,7 @@ export default function Navigation() {
           <div className="w-full text-end flex justify-end text-[200%] p-2">
             <SlClose onClick={() => setIsOpen(false)} />
           </div>
-
+          <NavItem href="/menu/lottery">LOTTERIES</NavItem>
           <NavItem href="/menu/users">USERS</NavItem>
           <NavItem href="/menu/top-users">TOP USERS</NavItem>
           <NavItem href="/menu/withdraw">WITHDRAW</NavItem>

@@ -4,6 +4,7 @@
 import {
   FetchUsersProps,
   FetchUsersResponse,
+  Lottery,
   TopUsers,
   UpdatedUser,
 } from "@/components/Users/types";
@@ -34,94 +35,13 @@ export const getUsers = async (
     return {
       users: [
         {
-          id: 3,
-          login: "u1",
-          name: "Name Test1",
-          email: "test@test",
-          username: "u1",
-          reflink: null,
-          balanceAmount: 100,
-          investModels: [
-            {
-              id: 11,
-              naming: "Private",
-              priceAmount: 10,
-              trendingStatus: "MEDIUM",
-              partnerBonusAmount: 0,
-              mainBonusAmount: 0,
-              lostRefIncomeAmount: 0,
-              totalPrizeAmount: 0,
-              investModelStatus: "BOUGHT",
-              investModelLevel: "LEVEL_1",
-              unlockDate: null,
-              createdAt: "2024-07-24T17:58:46.874446",
-            },
-            {
-              id: 12,
-              naming: "Lvl 1",
-              priceAmount: 200,
-              trendingStatus: "MEDIUM",
-              partnerBonusAmount: 0,
-              mainBonusAmount: 0,
-              lostRefIncomeAmount: 0,
-              totalPrizeAmount: 0,
-              investModelStatus: "LOCKED",
-              investModelLevel: "LEVEL_2",
-              unlockDate: null,
-              createdAt: "2024-07-24T17:58:46.98856",
-            },
-            {
-              id: 13,
-              naming: "Lvl 2",
-              priceAmount: 170,
-              trendingStatus: "MEDIUM",
-              partnerBonusAmount: 0,
-              mainBonusAmount: 0,
-              lostRefIncomeAmount: 0,
-              totalPrizeAmount: 0,
-              investModelStatus: "LOCKED",
-              investModelLevel: "LEVEL_3",
-              unlockDate: null,
-              createdAt: "2024-07-24T17:58:47.106525",
-            },
-            {
-              id: 14,
-              naming: "Lvl 3",
-              priceAmount: 130,
-              trendingStatus: "MEDIUM",
-              partnerBonusAmount: 0,
-              mainBonusAmount: 110,
-              lostRefIncomeAmount: 0,
-              totalPrizeAmount: 11000,
-              investModelStatus: "LOCKED",
-              investModelLevel: "LEVEL_4",
-              unlockDate: null,
-              createdAt: "2024-07-24T17:58:47.21934",
-            },
-            {
-              id: 15,
-              naming: "Lvl 4",
-              priceAmount: 110,
-              trendingStatus: "MEDIUM",
-              partnerBonusAmount: 0,
-              mainBonusAmount: 0,
-              lostRefIncomeAmount: 0,
-              totalPrizeAmount: 0,
-              investModelStatus: "LOCKED",
-              investModelLevel: "LEVEL_5",
-              unlockDate: null,
-              createdAt: "2024-07-24T17:58:47.346111",
-            },
-          ],
-          transactions: [
-            {
-              transactionAmount: 0.01,
-              description: "Encouraging bonus",
-              transactionType: "INCOME",
-              incomeType: "ADMIN",
-              createdAt: "2024-07-24T17:58:47.836026",
-            },
-          ],
+          id: 12345,
+          login: "user123",
+          name: "John Doe",
+          username: "johndoe",
+          upperReferralLogin: "referrer123",
+          role: "ADMIN",
+          createdAt: "2024-07-31T12:34:56",
         },
       ],
       totalUsers: 100,
@@ -130,94 +50,13 @@ export const getUsers = async (
   return {
     users: [
       {
-        id: 3,
-        login: "u1",
-        name: "Name Test1",
-        email: "test@test",
-        username: "u1",
-        reflink: null,
-        balanceAmount: 100,
-        investModels: [
-          {
-            id: 11,
-            naming: "Private",
-            priceAmount: 10,
-            trendingStatus: "MEDIUM",
-            partnerBonusAmount: 0,
-            mainBonusAmount: 0,
-            lostRefIncomeAmount: 0,
-            totalPrizeAmount: 0,
-            investModelStatus: "BOUGHT",
-            investModelLevel: "LEVEL_1",
-            unlockDate: null,
-            createdAt: "2024-07-24T17:58:46.874446",
-          },
-          {
-            id: 12,
-            naming: "Lvl 1",
-            priceAmount: 200,
-            trendingStatus: "MEDIUM",
-            partnerBonusAmount: 0,
-            mainBonusAmount: 0,
-            lostRefIncomeAmount: 0,
-            totalPrizeAmount: 0,
-            investModelStatus: "LOCKED",
-            investModelLevel: "LEVEL_2",
-            unlockDate: null,
-            createdAt: "2024-07-24T17:58:46.98856",
-          },
-          {
-            id: 13,
-            naming: "Lvl 2",
-            priceAmount: 170,
-            trendingStatus: "MEDIUM",
-            partnerBonusAmount: 0,
-            mainBonusAmount: 0,
-            lostRefIncomeAmount: 0,
-            totalPrizeAmount: 0,
-            investModelStatus: "LOCKED",
-            investModelLevel: "LEVEL_3",
-            unlockDate: null,
-            createdAt: "2024-07-24T17:58:47.106525",
-          },
-          {
-            id: 14,
-            naming: "Lvl 3",
-            priceAmount: 130,
-            trendingStatus: "MEDIUM",
-            partnerBonusAmount: 0,
-            mainBonusAmount: 110,
-            lostRefIncomeAmount: 0,
-            totalPrizeAmount: 11000,
-            investModelStatus: "LOCKED",
-            investModelLevel: "LEVEL_4",
-            unlockDate: null,
-            createdAt: "2024-07-24T17:58:47.21934",
-          },
-          {
-            id: 15,
-            naming: "Lvl 4",
-            priceAmount: 110,
-            trendingStatus: "MEDIUM",
-            partnerBonusAmount: 0,
-            mainBonusAmount: 0,
-            lostRefIncomeAmount: 0,
-            totalPrizeAmount: 0,
-            investModelStatus: "LOCKED",
-            investModelLevel: "LEVEL_5",
-            unlockDate: null,
-            createdAt: "2024-07-24T17:58:47.346111",
-          },
-        ],
-        transactions: [
-          {
-            transactionAmount: 0.01,
-            description: "Encouraging bonus",
-            transactionType: "INCOME",
-            incomeType: "ADMIN",
-            createdAt: "2024-07-24T17:58:47.836026",
-          },
-        ],
+        id: 12345,
+        login: "user123",
+        name: "John Doe",
+        username: "johndoe",
+        upperReferralLogin: "referrer123",
+        role: "ADMIN",
+        createdAt: "2024-07-31T12:34:56",
       },
     ],
     totalUsers: 100,
@@ -225,7 +64,7 @@ export const getUsers = async (
 };
 
 export const getUser = async (id: string | number) => {
-  if (id == 3) {
+  if (id == 12345) {
     return {
       id: 3,
       login: "u1",
@@ -307,6 +146,41 @@ export const getUser = async (id: string | number) => {
         },
       ],
       transactions: [
+        {
+          transactionAmount: 0.01,
+          description: "Encouraging bonus",
+          transactionType: "PURCHASE",
+          incomeType: "ADMIN",
+          createdAt: "2024-07-24T17:58:47.836026",
+        },
+        {
+          transactionAmount: 0.01,
+          description: "Encouraging bonus",
+          transactionType: "DEPOSIT",
+          incomeType: "ADMIN",
+          createdAt: "2024-07-24T17:58:47.836026",
+        },
+        {
+          transactionAmount: 0.01,
+          description: "Encouraging bonus",
+          transactionType: "INCOME",
+          incomeType: "ADMIN",
+          createdAt: "2024-07-24T17:58:47.836026",
+        },
+        {
+          transactionAmount: 0.01,
+          description: "Encouraging bonus",
+          transactionType: "INCOME",
+          incomeType: "ADMIN",
+          createdAt: "2024-07-24T17:58:47.836026",
+        },
+        {
+          transactionAmount: 0.01,
+          description: "Encouraging bonus",
+          transactionType: "INCOME",
+          incomeType: "ADMIN",
+          createdAt: "2024-07-24T17:58:47.836026",
+        },
         {
           transactionAmount: 0.01,
           description: "Encouraging bonus",
@@ -413,7 +287,66 @@ export const getTopUsers = async (): Promise<TopUsers[]> => {
   ];
 };
 
-export const updateTopUser = async (user: UpdatedUser) => {
+export const getLottery = async (): Promise<Lottery[]> => {
+  await delayedPromise();
+  return [
+    {
+      id: 1,
+      naming: 'Level1',
+      priceAmount: 10,
+      trendingStatus: "TOP",
+      totalPrizeAmount: 100,
+      investModelStatus: 'LOCKED',
+      investModelLevel: "LEVEL 1",
+      unlockDate: null,
+      createdAt: '2024-07-24T18:27:10.731075',
+    },
+    {
+      id: 2,
+      naming: 'Level2',
+      priceAmount: 10,
+      trendingStatus: "TOP",
+      totalPrizeAmount: 100,
+      investModelStatus: 'LOCKED',
+      investModelLevel: "LEVEL 1",
+      unlockDate: null,
+      createdAt: '2024-07-24T18:27:10.731075',
+    },
+    {
+      id: 3,
+      naming: 'Level3',
+      priceAmount: 10,
+      trendingStatus: "TOP",
+      totalPrizeAmount: 100,
+      investModelStatus: 'AVAILABLE',
+      investModelLevel: "LEVEL 1",
+      unlockDate: null,
+      createdAt: '2024-07-24T18:27:10.731075',
+    },
+    {
+      id: 4,
+      naming: 'Level4',
+      priceAmount: 10,
+      trendingStatus: "TOP",
+      totalPrizeAmount: 100,
+      investModelStatus: 'AVAILABLE',
+      investModelLevel: "LEVEL 1",
+      unlockDate: null,
+      createdAt: '2024-07-24T18:27:10.731075',
+    },
+  ];
+};
+
+export const updateTopUser = async (user: TopUsers) => {
   await new Promise((res) => setTimeout(res, 1000));
   return true;
 };
+
+export const updateLottery = async (lottery: Lottery) => {
+  await new Promise((res) => setTimeout(res, 1000));
+  return true;
+};
+
+
+// ERROR HANDLER FOR LOTTERY AND TOP USERS
+// STYLES

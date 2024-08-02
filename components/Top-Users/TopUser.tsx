@@ -28,7 +28,7 @@ export default function TopUser({ user }: { user: TopUsers }) {
     e.stopPropagation();
     setLoading(true);
     const response = await updateTopUser({
-      id: user.name,
+      ...user,
       name: updatedName,
       earnedAmount: updatedEarnedAmount,
     });
@@ -50,7 +50,7 @@ export default function TopUser({ user }: { user: TopUsers }) {
   return (
     <div
       onClick={handleEdit}
-      className="w-full border-2 border-gray-600 p-2 rounded-xl grid grid-cols-3 px-6 max-sm:px-2 text-center max-sm:text-[14px] cursor-pointer hover:bg-gray-400/40"
+      className="w-full border-2 border-gray-600 p-2 rounded-xl grid grid-cols-3 gap-2 px-6 max-sm:px-2 text-center max-sm:text-[14px] cursor-pointer hover:bg-gray-400/40"
     >
       <div className="w-full">
         {isEditing ? (
@@ -89,7 +89,7 @@ export default function TopUser({ user }: { user: TopUsers }) {
           </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center">
-            <ClipLoader color="#8b5cf6"/>
+            <ClipLoader color="#8b5cf6" />
           </div>
         )
       ) : (

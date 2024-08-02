@@ -4,12 +4,12 @@ export interface FetchUsersProps {
 }
 
 export interface FetchUsersResponse {
-  users: User[];
+  users: UserForTable[];
   totalUsers: number;
 }
 
 export interface User {
-  id: number;
+  id: number | string;
   login: string;
   username: string;
   name: string;
@@ -18,6 +18,16 @@ export interface User {
   balanceAmount: number;
   investModels: Lottery[];
   transactions: Transaction[];
+}
+
+export interface UserForTable {
+  id: string | number;
+  login: string;
+  name: string;
+  username: string;
+  upperReferralLogin: string;
+  role?: string;
+  createdAt: string;
 }
 
 export interface Lottery {
@@ -52,8 +62,8 @@ export interface TopUsers {
   createdAt: string;
 }
 
-export interface UpdatedUser{
-  id: string | number,
-  name: string,
+export interface UpdatedUser {
+  id: string | number;
+  name: string;
   earnedAmount: number;
 }
