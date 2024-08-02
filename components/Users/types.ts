@@ -35,9 +35,9 @@ export interface Lottery {
   naming: string;
   priceAmount: number;
   trendingStatus: string;
-  partnerBonusAmount: number;
-  mainBonusAmount: number;
-  lostRefIncomeAmount: number;
+  // partnerBonusAmount: number;
+  // mainBonusAmount: number;
+  // lostRefIncomeAmount: number;
   totalPrizeAmount: number;
   investModelStatus: string;
   investModelLevel: string;
