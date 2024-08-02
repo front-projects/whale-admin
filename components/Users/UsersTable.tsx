@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridPaginationModel, GridRowParams } from "@mui/x-data-grid";
 import { getUsers } from "@/lib/requests";
-import { User } from "./types";
+import { UserForTable } from "./types";
 import { tableStyle } from "./tableStyle";
 import { HashLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ const CustomLoadingOverlay = () => {
 };
 
 const UsersTable: React.FC = () => {
-  const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<UserForTable[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
