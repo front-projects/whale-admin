@@ -56,7 +56,7 @@ const UsersTable: React.FC = () => {
 
   return (
     <div
-      className="bg-gray-600/10 border-2 border-violet-500 rounded-md h-full w-full scroll-container"
+      className="w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full rounded-xl h-full"
       id="container-users"
     >
       <DataGrid
@@ -71,6 +71,8 @@ const UsersTable: React.FC = () => {
           loadingOverlay: CustomLoadingOverlay,
         }}
         disableRowSelectionOnClick={true}
+        disableColumnResize={true}
+        disableColumnMenu={true}
         pagination
         autosizeOnMount={true}
         paginationMode="server"

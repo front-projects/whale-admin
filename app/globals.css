@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  background-color: #17181e;
+  background-color: rgb(23, 24, 30);
   color: white;
 }
 
@@ -80,7 +80,7 @@ input:focus:-webkit-autofill {
 /* DATA-GRID MUI */
 
 .MuiDataGrid-root {
-  border: none !important;
+  border: 2px solid rgb(139, 92, 246) !important;
 }
 .MuiDataGrid-columnHeader,
 .MuiDataGrid-filler,

@@ -13,7 +13,6 @@ export interface User {
   login: string;
   username: string;
   name: string;
-  email: string;
   reflink: string | null;
   balanceAmount: number;
   investModels: Lottery[];

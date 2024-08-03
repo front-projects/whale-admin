@@ -51,10 +51,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
               <span className="text-gray-400 font-[400] text-lg">Login:</span>{" "}
               {user?.login}
             </div>
-            <div>
-              <span className="text-gray-400 font-[400] text-lg">Email:</span>{" "}
-              {user?.email}
-            </div>
+            
             <div>
               <span className="text-gray-400 font-[400] text-lg">ID:</span>{" "}
               {user?.id}
