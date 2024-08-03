@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { DataGrid, GridPaginationModel, GridRowParams } from "@mui/x-data-grid";
-import { getUsers } from "@/lib/requests";
-import { UserForTable } from "./types";
-import { tableStyle } from "./tableStyle";
+import { DataGrid, GridRowParams } from "@mui/x-data-grid";
+import { getDeposits, getUsers } from "@/lib/requests";
+import { tableStyle } from "../Users/tableStyle";
 import { HashLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
-import { columnsUsers } from "./columnsUsers";
+import { Deposit } from "./types";
+import { columnsDeposits } from "./DepositsColumns";
 
 const CustomLoadingOverlay = () => {
   return (
@@ -17,13 +17,10 @@ const CustomLoadingOverlay = () => {
   );
 };
 
-const UsersTable: React.FC = () => {
-  const [users, setUsers] = useState<UserForTable[]>([]);
+const DepositsTable: React.FC = () => {
+  const [deposits, setDeposits] = useState<Deposit[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(50);
-  const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,12 +30,11 @@ const UsersTable: React.FC = () => {
       setLoading(true);
       try {
         await delay(1000);
-        const fetchedUsers = await getUsers({ page: page + 1, pageSize });
-        if (!fetchedUsers) {
+        const fetchedDeposits = await getDeposits();
+        if (!fetchedDeposits) {
           setError(true);
         }
-        setUsers(fetchedUsers.users);
-        setRowCount(fetchedUsers.totalUsers);
+        setDeposits(fetchedDeposits);
       } catch (error) {
         setError(true);
       }
@@ -46,11 +42,8 @@ const UsersTable: React.FC = () => {
     };
 
     fetchData();
-  }, [page]);
+  }, []);
 
-  const handlePageChange = (params: GridPaginationModel) => {
-    setPage(params.page);
-  };
   const handleRowClick = (params: GridRowParams) => {
     router.push(`/menu/users/${params.row.id}`);
   };
@@ -61,11 +54,10 @@ const UsersTable: React.FC = () => {
       id="container-users"
     >
       <DataGrid
-        rows={users}
-        columns={columnsUsers}
-        rowCount={rowCount}
+        rows={deposits}
+        columns={columnsDeposits}
         localeText={{
-          noRowsLabel: error ? "Users upload error" : "No users",
+          noRowsLabel: error ? "Users upload error" : "No deposits",
         }}
         loading={loading}
         slots={{
@@ -75,18 +67,16 @@ const UsersTable: React.FC = () => {
         disableColumnResize={true}
         disableColumnMenu={true}
         pagination
-        autosizeOnMount={true}
-        paginationMode="server"
-        paginationModel={{ page, pageSize }}
-        onPaginationModelChange={(params) => {
-          handlePageChange(params);
+        initialState={{
+          pagination: {
+            paginationModel: { page: 0, pageSize: 100 },
+          },
         }}
         sx={tableStyle}
-        onRowClick={handleRowClick}
         disableVirtualization={true}
       />
     </div>
   );
 };
 
-export default UsersTable;
+export default DepositsTable;

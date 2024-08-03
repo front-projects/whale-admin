@@ -1,366 +1,52 @@
 "use server";
 
+import { Deposit } from "@/components/Deposits/types";
 // import axios from "axios";
 import {
   FetchUsersProps,
   FetchUsersResponse,
   Lottery,
   TopUsers,
-  UpdatedUser,
 } from "@/components/Users/types";
+import { Withdraw } from "@/components/Withdraw/types";
+import axios from "axios";
+import { cookies } from "next/headers";
 
-// export const getUsers = async (
-//   fetch: FetchUsersProps
-// ): Promise<FetchUsersResponse> => {
-//   const URL = process.env.NEXT_PUBLIC_API_URL;
-//   try {
-//     const response = await axios.get(URL + "/api/users");
-//   } catch {
-//     throw new Error("Error fetching data");
-//   }
-//   return {
-//     users: [
-//       { id: 1, name: "Vlad", email: "Test" },
-//       { id: 2, name: "Vlad", email: "Test" },
-//       { id: 3, name: "Vlad", email: "Test" },
-//     ],
-//     totalUsers: 100,
-//   };
-// };
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getUsers = async (
   fetch: FetchUsersProps
-): Promise<FetchUsersResponse> => {
-  if (fetch.page == 1) {
-    return {
-      users: [
-        {
-          id: 12345,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12346123333,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12343215,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12312345444444433333,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12312334533333333333333,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12343123123522222222222222222,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123132345111111111111,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 1213233451412412,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12123123345111111111111111,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123321345999999999,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12312334588888888,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12333123345777777777,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12331245666666666666,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123312312345555555555,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 1233123454444444444444,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123213123345333333333333,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123123123452222222,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12312312334511111123,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 123312314533333333123,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-        {
-          id: 12331231233453123123,
-          login: "user123",
-          name: "John Doe",
-          username: "johndoe",
-          upperReferralLogin: "referrer123",
-          role: "ADMIN",
-          createdAt: "2024-07-31T12:34:56",
-        },
-
-      ],
-      totalUsers: 100,
-    };
-  }
-  return {
-    users: [
+): Promise<FetchUsersResponse | undefined> => {
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.get(
+      API_URL + `users?size=10&page=${fetch.page}`,
       {
-        id: 12345,
-        login: "user123",
-        name: "John Doe",
-        username: "johndoe",
-        upperReferralLogin: "referrer123",
-        role: "ADMIN",
-        createdAt: "2024-07-31T12:34:56",
-      },
-    ],
-    totalUsers: 100,
-  };
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }
+    );
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    return undefined;
+  }
 };
 
 export const getUser = async (id: string | number) => {
-  if (id == 12345) {
-    return {
-      id: 3,
-      login: "u1",
-      name: "Name Test1",
-      username: "u1",
-      reflink: null,
-      balanceAmount: 100,
-      investModels: [
-        {
-          id: 11,
-          naming: "Private",
-          priceAmount: 10,
-          trendingStatus: "MEDIUM",
-          partnerBonusAmount: 0,
-          mainBonusAmount: 0,
-          lostRefIncomeAmount: 0,
-          totalPrizeAmount: 0,
-          investModelStatus: "BOUGHT",
-          investModelLevel: "LEVEL_1",
-          unlockDate: null,
-          createdAt: "2024-07-24T17:58:46.874446",
-        },
-        {
-          id: 12,
-          naming: "Lvl 1",
-          priceAmount: 200,
-          trendingStatus: "MEDIUM",
-          partnerBonusAmount: 0,
-          mainBonusAmount: 0,
-          lostRefIncomeAmount: 0,
-          totalPrizeAmount: 0,
-          investModelStatus: "LOCKED",
-          investModelLevel: "LEVEL_2",
-          unlockDate: null,
-          createdAt: "2024-07-24T17:58:46.98856",
-        },
-        {
-          id: 13,
-          naming: "Lvl 2",
-          priceAmount: 170,
-          trendingStatus: "MEDIUM",
-          partnerBonusAmount: 0,
-          mainBonusAmount: 0,
-          lostRefIncomeAmount: 0,
-          totalPrizeAmount: 0,
-          investModelStatus: "LOCKED",
-          investModelLevel: "LEVEL_3",
-          unlockDate: null,
-          createdAt: "2024-07-24T17:58:47.106525",
-        },
-        {
-          id: 14,
-          naming: "Lvl 3",
-          priceAmount: 130,
-          trendingStatus: "MEDIUM",
-          partnerBonusAmount: 0,
-          mainBonusAmount: 110,
-          lostRefIncomeAmount: 0,
-          totalPrizeAmount: 11000,
-          investModelStatus: "LOCKED",
-          investModelLevel: "LEVEL_4",
-          unlockDate: null,
-          createdAt: "2024-07-24T17:58:47.21934",
-        },
-        {
-          id: 15,
-          naming: "Lvl 4",
-          priceAmount: 110,
-          trendingStatus: "MEDIUM",
-          partnerBonusAmount: 0,
-          mainBonusAmount: 0,
-          lostRefIncomeAmount: 0,
-          totalPrizeAmount: 0,
-          investModelStatus: "LOCKED",
-          investModelLevel: "LEVEL_5",
-          unlockDate: null,
-          createdAt: "2024-07-24T17:58:47.346111",
-        },
-      ],
-      transactions: [
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "PURCHASE",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "DEPOSIT",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "INCOME",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "INCOME",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "INCOME",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-        {
-          transactionAmount: 0.01,
-          description: "Encouraging bonus",
-          transactionType: "INCOME",
-          incomeType: "ADMIN",
-          createdAt: "2024-07-24T17:58:47.836026",
-        },
-      ],
-    };
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.get(API_URL + `users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+    console.log(response.data);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return undefined;
   }
 };
 
@@ -463,47 +149,47 @@ export const getLottery = async (): Promise<Lottery[]> => {
   return [
     {
       id: 1,
-      naming: 'Level1',
+      naming: "Level1",
       priceAmount: 10,
       trendingStatus: "TOP",
       totalPrizeAmount: 100,
-      investModelStatus: 'LOCKED',
+      investModelStatus: "LOCKED",
       investModelLevel: "LEVEL 1",
       unlockDate: null,
-      createdAt: '2024-07-24T18:27:10.731075',
+      createdAt: "2024-07-24T18:27:10.731075",
     },
     {
       id: 2,
-      naming: 'Level2',
+      naming: "Level2",
       priceAmount: 10,
       trendingStatus: "TOP",
       totalPrizeAmount: 100,
-      investModelStatus: 'LOCKED',
+      investModelStatus: "LOCKED",
       investModelLevel: "LEVEL 1",
       unlockDate: null,
-      createdAt: '2024-07-24T18:27:10.731075',
+      createdAt: "2024-07-24T18:27:10.731075",
     },
     {
       id: 3,
-      naming: 'Level3',
+      naming: "Level3",
       priceAmount: 10,
       trendingStatus: "TOP",
       totalPrizeAmount: 100,
-      investModelStatus: 'AVAILABLE',
+      investModelStatus: "AVAILABLE",
       investModelLevel: "LEVEL 1",
       unlockDate: null,
-      createdAt: '2024-07-24T18:27:10.731075',
+      createdAt: "2024-07-24T18:27:10.731075",
     },
     {
       id: 4,
-      naming: 'Level4',
+      naming: "Level4",
       priceAmount: 10,
       trendingStatus: "TOP",
       totalPrizeAmount: 100,
-      investModelStatus: 'AVAILABLE',
+      investModelStatus: "AVAILABLE",
       investModelLevel: "LEVEL 1",
       unlockDate: null,
-      createdAt: '2024-07-24T18:27:10.731075',
+      createdAt: "2024-07-24T18:27:10.731075",
     },
   ];
 };
@@ -518,6 +204,51 @@ export const updateLottery = async (lottery: Lottery) => {
   return true;
 };
 
+export const getDeposits = async (): Promise<Deposit[]> => {
+  return [
+    {
+      id: 1,
+      name: "Test Name asd",
+      amount: 100,
+      adress: "asdsdsd3213i3jiojasojdoajsidjo3213",
+      createdAt: "2024-07-24T18:27:10.731075",
+    },
+    {
+      id: 2,
+      name: "Test Name asd",
+      amount: 200,
+      adress: "asdsdsd3213i3jiojasojdoajsidjo3213",
+      createdAt: "2024-04-24T18:27:10.731075",
+    },
+  ];
+};
 
-// ERROR HANDLER FOR LOTTERY AND TOP USERS
-// STYLES
+export const getWithdraw = async (): Promise<Withdraw[] | undefined> => {
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.get(API_URL + `withdraws`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+    return response.data;
+  } catch (error) {
+    return undefined;
+  }
+};
+
+export const withdrawStatusUpdate = async (obj: Withdraw) => {
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.put(API_URL + `withdraws/${obj.id}`, obj, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+    if(response.status == 200){
+      return true;
+    }
+  } catch (error) {
+    return false;
+  }
+};

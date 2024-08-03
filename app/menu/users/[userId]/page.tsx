@@ -6,6 +6,7 @@ import { IoChevronBack } from "react-icons/io5";
 import { FaUser } from "react-icons/fa";
 import HistoryItem from "@/components/Users/HistoryItem";
 import { groupTransactionsByDate } from "@/lib/groupTransactionsByDate";
+import { Lottery } from "@/components/Users/types";
 
 interface Params {
   userId: string;
@@ -18,7 +19,9 @@ interface UserPageProps {
 const UserPage: FC<UserPageProps> = async ({ params }) => {
   const user = await getUser(params.userId);
 
-  const groupedTransactions = groupTransactionsByDate(user ? user.transactions : []);
+  const groupedTransactions = groupTransactionsByDate(
+    user ? user.transactions : []
+  );
 
   return (
     <section className="w-full h-full flex justify-center">
@@ -37,7 +40,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
           className="flex flex-col w-full gap-4 mt-10 font-semibold text-xl px-6 items-center overflow-y-auto"
           style={{ height: "calc(100% - 80px)" }}
         >
-          <div className="flex flex-col gap-4 w-max">
+          <div className="flex flex-col gap-4 w-max max-w-full">
             <div className="flex items-center justify-center rounded-[50%]">
               <div className="bg-gray-600 p-6 rounded-xl text-[200%]">
                 <FaUser />
@@ -51,7 +54,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
               <span className="text-gray-400 font-[400] text-lg">Login:</span>{" "}
               {user?.login}
             </div>
-            
+
             <div>
               <span className="text-gray-400 font-[400] text-lg">ID:</span>{" "}
               {user?.id}
@@ -60,7 +63,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
               <span className="text-gray-400 font-[400] text-lg">Balance:</span>{" "}
               {user?.balanceAmount.toFixed(2)} $
             </div>
-            <div>
+            <div className="text-sm">
               <span className="text-gray-400 font-[400] text-lg">Reflink:</span>{" "}
               {user?.reflink}
             </div>
@@ -70,7 +73,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
             <span className="text-gray-400 font-[400] text-lg">Purchases:</span>{" "}
           </div>
           <div className="flex gap-2 items-center justify-center w-full">
-            {user?.investModels.map((lottery) => (
+            {user?.investModels.map((lottery: Lottery) => (
               <LotteryStatus lottery={lottery} key={lottery.id} />
             ))}
           </div>

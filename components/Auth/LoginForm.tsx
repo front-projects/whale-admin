@@ -7,11 +7,13 @@ import Button from "../ui/Button";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import gsap from "gsap";
+import { useRouter } from "next/navigation";
 
 export function LoginForm() {
   const { pending } = useFormStatus();
   const container = useRef(null);
   const [state, action] = useFormState(login, undefined);
+  const router = useRouter();
 
   useGSAP(
     () => {
@@ -23,7 +25,10 @@ export function LoginForm() {
     },
     { scope: container }
   );
- 
+  if (state?.message == "redirect") {
+    router.push("/menu");
+  }
+
   return (
     <form
       action={action}
@@ -35,8 +40,8 @@ export function LoginForm() {
         <input
           id="email"
           name="email"
-          placeholder="email@example.com"
-          type="email"
+          placeholder="login"
+          type="text"
           // className={state?.errors?.email && !pending ? "border-red-500" : ""}
         />
         {state?.errors?.email && !pending && (
@@ -54,7 +59,7 @@ export function LoginForm() {
         {state?.errors?.password && !pending && (
           <p className="text-sm text-red-500">{state.errors.password}</p>
         )}
-        {state?.message && !pending && (
+        {state?.message && state?.message !== "redirect" && !pending && (
           <p className="text-sm text-red-500">{state.message}</p>
         )}
         <LoginButton />

@@ -1,6 +1,7 @@
 import "server-only";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { NextResponse } from "next/server";
 
 // export async function createSession(token: string) {
 //   const expiresAt = new Date(Date.now() + 60 * 60 * 1000);
@@ -14,9 +15,9 @@ import { redirect } from "next/navigation";
 //   });
 //   redirect("/menu");
 // }
-export async function createSession(accessToken: string, refreshToken: string) {
-  const accessExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 хвилин
-  const refreshExpiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 днів
+export async function createSession(accessToken: string) {
+  const accessExpiresAt = new Date(Date.now() + 5 * 60 * 60 * 1000); // 5 годин
+  // const refreshExpiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000); // 30 днів
 
   cookies().set("accessToken", accessToken, {
     httpOnly: true,
@@ -26,50 +27,49 @@ export async function createSession(accessToken: string, refreshToken: string) {
     path: "/",
   });
 
-  cookies().set("refreshToken", refreshToken, {
-    httpOnly: true,
-    secure: true,
-    expires: refreshExpiresAt,
-    sameSite: "lax",
-    path: "/",
-  });
+  // cookies().set("refreshToken", refreshToken, {
+  //   httpOnly: true,
+  //   secure: true,
+  //   expires: refreshExpiresAt,
+  //   sameSite: "lax",
+  //   path: "/",
+  // });
 
-  redirect("/menu");
+  // redirect("/menu/lottery");
 }
 
-async function refreshAccessToken() {
-  const refreshToken = cookies().get("refreshToken")?.value;
-  if (!refreshToken) {
-    redirect("/login");
-  }
+// async function refreshAccessToken() {
+//   const refreshToken = cookies().get("refreshToken")?.value;
+//   if (!refreshToken) {
+//     redirect("/login");
+//   }
 
-  // Надсилаємо запит на сервер для оновлення access token
-  const response = await fetch("/api/refresh-token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ refreshToken }),
-  });
+//   // Надсилаємо запит на сервер для оновлення access token
+//   const response = await fetch("/api/refresh-token", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({ refreshToken }),
+//   });
 
-  if (!response.ok) {
-    redirect("/login");
-  }
+//   if (!response.ok) {
+//     redirect("/login");
+//   }
 
-  const { accessToken } = await response.json();
-  const accessExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 хвилин
+//   const { accessToken } = await response.json();
+//   const accessExpiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 хвилин
 
-  cookies().set("accessToken", accessToken, {
-    httpOnly: true,
-    secure: true,
-    expires: accessExpiresAt,
-    sameSite: "lax",
-    path: "/",
-  });
+//   cookies().set("accessToken", accessToken, {
+//     httpOnly: true,
+//     secure: true,
+//     expires: accessExpiresAt,
+//     sameSite: "lax",
+//     path: "/",
+//   });
 
-  return accessToken;
-}
-
+//   return accessToken;
+// }
 
 // export async function verifySession() {
 //   const token = cookies().get("token")?.value;
@@ -82,9 +82,9 @@ async function refreshAccessToken() {
 export async function verifySession() {
   let accessToken = cookies().get("accessToken")?.value;
 
-  if (!accessToken) {
-    accessToken = await refreshAccessToken();
-  }
+  // if (!accessToken) {
+  //   accessToken = await refreshAccessToken();
+  // }
 
   // Додаткова логіка перевірки access token
   // Наприклад, розшифрування та перевірка терміну дії
@@ -93,10 +93,9 @@ export async function verifySession() {
 }
 export function deleteSession() {
   cookies().delete("accessToken");
-  cookies().delete("refreshToken");
+  // cookies().delete("refreshToken");
   redirect("/login");
 }
-
 
 // export function deleteSession() {
 //   cookies().delete("token");
