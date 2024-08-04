@@ -237,7 +237,9 @@ export const getWithdraw = async (): Promise<Withdraw[] | undefined> => {
   }
 };
 
-export const withdrawStatusUpdate = async (obj: Withdraw): Promise<boolean | undefined> => {
+export const withdrawStatusUpdate = async (
+  obj: Withdraw
+): Promise<boolean | undefined> => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.put(API_URL + `withdraws/${obj.id}`, obj, {

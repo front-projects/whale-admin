@@ -132,7 +132,7 @@ const WithdrawTable: React.FC = () => {
           rows={withdraw}
           columns={updatedColumns}
           localeText={{
-            noRowsLabel: error ? "Users upload error" : "No withdraw",
+            noRowsLabel: error ? "Withdraws upload error" : "No withdraw",
           }}
           loading={loading}
           slots={{
