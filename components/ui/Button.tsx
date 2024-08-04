@@ -5,6 +5,7 @@ interface ButtonProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   className?: string;
   disabled?: boolean;
+  onClick: any;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -12,11 +13,13 @@ const Button: React.FC<ButtonProps> = ({
   type,
   className,
   disabled,
+  onClick
 }) => {
   return (
     <button
       disabled={disabled}
       type={type}
+      onClick={onClick}
       className={`${className} 
         rounded-[8px] p-2
         shadow-xl 

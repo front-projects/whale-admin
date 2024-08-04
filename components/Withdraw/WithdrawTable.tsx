@@ -12,6 +12,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { IoMdCloseCircle } from "react-icons/io";
 import { GoCodeReview } from "react-icons/go";
 import Modal from "../ui/Modal";
+import Button from "../ui/Button";
 
 const CustomLoadingOverlay = () => {
   return (
@@ -25,7 +26,7 @@ const WithdrawTable: React.FC = () => {
   const [withdraw, setWithdraw] = useState<Withdraw[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
-  // const [modal,setModal] = useState();
+  const [modal, setModal] = useState<[Withdraw, string] | null>(null);
 
   const fetchData = async () => {
     setLoading(true);
@@ -85,7 +86,7 @@ const WithdrawTable: React.FC = () => {
       renderCell: (params: any) =>
         renderActionCell(
           params,
-          (row) => updateWithdrawStatus(row, "APPROVED"),
+          (row) => setModal([row, "APPROVED"]),
           FaCheckCircle,
           "text-green-500"
         ),
@@ -97,7 +98,7 @@ const WithdrawTable: React.FC = () => {
       renderCell: (params: any) =>
         renderActionCell(
           params,
-          (row) => updateWithdrawStatus(row, "REJECTED"),
+          (row) => setModal([row, "REJECTED"]),
           IoMdCloseCircle,
           "text-red-400"
         ),
@@ -116,34 +117,62 @@ const WithdrawTable: React.FC = () => {
     },
   ];
 
+  const updatingHandler = async (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    if (modal) {
+      await updateWithdrawStatus(modal[0], modal[1]);
+      setModal(null);
+    }
+  };
+
   return (
     <>
-    <div className="w-full rounded-xl h-full" id="container-users">
-      <DataGrid
-        rows={withdraw}
-        columns={updatedColumns}
-        localeText={{
-          noRowsLabel: error ? "Users upload error" : "No withdraw",
-        }}
-        loading={loading}
-        slots={{
-          loadingOverlay: CustomLoadingOverlay,
-        }}
-        disableRowSelectionOnClick={true}
-        disableColumnResize={true}
-        disableColumnMenu={true}
-        pagination
-        // onRowClick={(params)=> updateWithdrawStatus(params.row,'PENDING')}
-        initialState={{
-          pagination: {
-            paginationModel: { page: 0, pageSize: 100 },
-          },
-        }}
-        sx={{ ...tableStyle, fontSize: "12px" }}
-        disableVirtualization={true}
-      />
-    </div>
-      {/* <Modal></Modal> */}
+      <div className="w-full rounded-xl h-full" id="container-users">
+        <DataGrid
+          rows={withdraw}
+          columns={updatedColumns}
+          localeText={{
+            noRowsLabel: error ? "Users upload error" : "No withdraw",
+          }}
+          loading={loading}
+          slots={{
+            loadingOverlay: CustomLoadingOverlay,
+          }}
+          disableRowSelectionOnClick={true}
+          disableColumnResize={true}
+          disableColumnMenu={true}
+          pagination
+          // onRowClick={(params)=> updateWithdrawStatus(params.row,'PENDING')}
+          initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 100 },
+            },
+          }}
+          sx={{ ...tableStyle, fontSize: "12px" }}
+          disableVirtualization={true}
+        />
+      </div>
+      <Modal show={modal} onClose={() => setModal(null)}>
+        <div className="text-center flex flex-col gap-2">
+          <p>
+            Do you realy want to{" "}
+            {modal && modal[1] == "APPROVED" ? "approve" : "reject"}
+          </p>
+          <p>request from {modal && modal[0].email}</p>
+          <p>Amount - {modal && modal[0].transactionAmount} $</p>
+          <div className="flex w-full items-center gap-2">
+            <Button className="w-1/2" onClick={updatingHandler}>
+              Ok
+            </Button>
+            <div
+              className="rounded-[8px] p-2 w-1/2 text-center border-2 
+              cursor-pointer hover:bg-gray-400/20 shadow-xl "
+            >
+              Cancel
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
