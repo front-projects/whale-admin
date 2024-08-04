@@ -5,7 +5,7 @@ interface ButtonProps {
   type?: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   className?: string;
   disabled?: boolean;
-  onClick: any;
+  onClick?: any;
 }
 
 const Button: React.FC<ButtonProps> = ({
