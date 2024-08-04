@@ -37,8 +37,8 @@ const UsersTable: React.FC = () => {
         if (!fetchedUsers) {
           setError(true);
         }
-        setUsers(fetchedUsers.users);
-        setRowCount(fetchedUsers.totalUsers);
+        setUsers(fetchedUsers ? fetchedUsers.users : []);
+        setRowCount(fetchedUsers ? fetchedUsers.totalUsers : 0);
       } catch (error) {
         setError(true);
       }
