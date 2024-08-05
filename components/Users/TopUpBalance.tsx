@@ -65,7 +65,7 @@ export default function TopUpBalance({ userId }: { userId: any }) {
         <Modal show={modal} onClose={() => setModal(false)}><div className="text-center flex flex-col gap-4">
             <p>Do you want to create transaction for this user? </p>
             <div>{value.toFixed(2)} $</div>
-            <Select options={options} styles={customStyles} placeholder="Select level" onChange={handleChange}/>
+            <Select options={options} styles={customStyles} placeholder="Select level" onChange={handleChange} id='select-for-topUp'/>
 
             <div className="flex w-full items-center gap-2">
 

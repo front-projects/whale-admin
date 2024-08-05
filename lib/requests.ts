@@ -168,7 +168,6 @@ export const withdrawStatusUpdate = async (
 
 export const createTransaction = async (transaction: any, userId: any) => {
   try {
-    console.log(transaction, userId)
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.post(API_URL + `incomes/add/${userId}`, transaction, {
       headers: {
@@ -177,6 +176,22 @@ export const createTransaction = async (transaction: any, userId: any) => {
     });
     if (response.status == 200) {
       return true;
+    }
+  } catch (error) {
+    return false;
+  }
+}
+
+export const randomLottery = async (obj:any) =>{
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.post(API_URL + `incomes/generate/count`, obj, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+    if (response.status == 200) {
+      return response.data;
     }
   } catch (error) {
     return false;

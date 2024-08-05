@@ -23,7 +23,7 @@ export default function Modal({
   return (
     show && (
       <div
-        className="w-screen h-screen fixed inset-0 bg-black/50 items-center justify-center flex"
+        className="w-screen h-screen fixed inset-0 bg-black/50 items-center justify-center flex z-10"
         onClick={()=> onClose()}
       >
         <div ref={modalRef} className="bg-[rgb(23,24,30)] p-6 px-14 border-2 border-violet-500 rounded-xl" onClick={(e) => e.stopPropagation()}>
