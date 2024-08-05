@@ -79,7 +79,9 @@ export default function Random() {
     return <>
         <Modal show={modal} onClose={() => setModal(false)}>
             {submited ? <div className="flex flex-col items-center">
-                <div className="flex flex-col gap-4">{submited.map((user: any) => <div>{user.username} - {user.incomes[0].transactionAmount.toFixed(2)} $</div>)}</div>
+                <div className="flex flex-col gap-4 max-h-[60vh] max-w-[40vw] overflow-y-auto max-sm:max-w-[100vw]">
+
+                    {submited.map((user: any) => <div>{user.username} - {user.incomes[0].transactionAmount.toFixed(2)} $</div>)}</div>
                 <Button className="w-1/2 mt-4" onClick={() => setModal(false)}>
                     Ok
                 </Button></div>
