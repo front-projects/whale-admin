@@ -72,7 +72,7 @@ export const getTopUsers = async (): Promise<TopUsers[] | undefined> => {
   }
 };
 
-export const getLottery = async (): Promise<Lottery[]> => {
+export const getLottery = async (): Promise<Lottery[] | undefined> => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.get(API_URL + `details/tables`, {
@@ -119,7 +119,7 @@ export const updateLottery = async (lottery: any, lotteryId: string | number | u
   }
 };
 
-export const getDeposits = async (): Promise<Deposit[]> => {
+export const getDeposits = async (): Promise<Deposit[] | undefined> => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.get(API_URL + `deposits`, {
@@ -179,7 +179,6 @@ export const createTransaction = async (transaction: any, userId: any) => {
       return true;
     }
   } catch (error) {
-    console.log(error.message)
     return false;
   }
 }
