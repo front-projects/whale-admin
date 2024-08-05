@@ -11,7 +11,7 @@ import Button from "@/components/ui/Button";
 import TopUpBalance from "@/components/Users/TopUpBalance";
 import { revalidatePath } from "next/cache";
 
-export const dynamic = 'no-store';
+export const dynamic = 'force-dynamic';
 
 interface Params {
   userId: string;
