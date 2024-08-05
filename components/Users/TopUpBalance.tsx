@@ -61,7 +61,7 @@ export default function TopUpBalance({ userId }: { userId: any }) {
 
     return <>
         <input placeholder="Enter an amount" value={value} onChange={handleAmountChange} type="number" />
-        <Button type="number" onClick={() => setModal(true)}>Top up balance</Button>
+        <Button onClick={() => setModal(true)}>Top up balance</Button>
         <Modal show={modal} onClose={() => setModal(false)}><div className="text-center flex flex-col gap-4">
             <p>Do you want to create transaction for this user? </p>
             <div>{value.toFixed(2)} $</div>
