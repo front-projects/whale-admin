@@ -18,7 +18,7 @@ const CustomLoadingOverlay = () => {
 };
 
 const DepositsTable: React.FC = () => {
-  const [deposits, setDeposits] = useState<Deposit[]>([]);
+  const [deposits, setDeposits] = useState<Deposit[] | undefined>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const router = useRouter();
