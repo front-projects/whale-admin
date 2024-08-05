@@ -58,7 +58,7 @@ function delayedPromise() {
   });
 }
 
-export const getTopUsers = async (): Promise<TopUsers[]> => {
+export const getTopUsers = async (): Promise<TopUsers[] | undefined> => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.get(API_URL + `details/gettop`, {
