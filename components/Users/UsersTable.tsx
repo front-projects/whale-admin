@@ -22,7 +22,7 @@ const UsersTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(500);
+  const [pageSize, setPageSize] = useState<number>(100);
   const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
 
