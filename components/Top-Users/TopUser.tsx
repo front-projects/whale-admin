@@ -28,16 +28,18 @@ export default function TopUser({ user }: { user: TopUsers }) {
     e.stopPropagation();
     setLoading(true);
     const response = await updateTopUser({
-      ...user,
       name: updatedName,
+      username: user.username,
       earnedAmount: updatedEarnedAmount,
-    });
+      createdAt: user.createdAt,
+    }, user.id ? user.id : 0);
     setLoading(false);
     if (response) {
       setName(updatedName);
       setEarnedAmount(updatedEarnedAmount);
       setIsEditing(false);
     } else {
+      alert("Someting went wrong, try again")
       handleCloseEdit(e);
     }
   };
@@ -74,7 +76,7 @@ export default function TopUser({ user }: { user: TopUsers }) {
             autoFocus
           />
         ) : (
-          earnedAmount.toFixed(2)
+          earnedAmount ? earnedAmount.toFixed(2) : 0
         )}
       </div>
       {isEditing ? (

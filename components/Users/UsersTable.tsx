@@ -22,18 +22,17 @@ const UsersTable: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
-  const [pageSize, setPageSize] = useState<number>(50);
+  const [pageSize, setPageSize] = useState<number>(500);
   const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
 
   useEffect(() => {
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
+
     const fetchData = async () => {
       setLoading(true);
       try {
-        await delay(1000);
-        const fetchedUsers = await getUsers({ page: page + 1, pageSize });
+
+        const fetchedUsers = await getUsers({ page: page, pageSize: pageSize });
         if (!fetchedUsers) {
           setError(true);
         }

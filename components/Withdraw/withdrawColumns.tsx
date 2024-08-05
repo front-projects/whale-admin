@@ -16,7 +16,7 @@ export const columnsDeposits: GridColDef[] | any[] = [
     field: "transactionAmountInCrypto",
     headerName: "Amount",
     minWidth: 140,
-    renderCell: (params) => params.value.toFixed(10),
+    renderCell: (params) => params.value && params.value.toFixed(10),
   },
   { field: "cryptoAddress", headerName: "cryptoAddress", minWidth: 320 },
 

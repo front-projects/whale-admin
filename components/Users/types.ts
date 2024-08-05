@@ -30,18 +30,19 @@ export interface UserForTable {
 }
 
 export interface Lottery {
-  id: string | number;
+  id?: string | number;
   naming: string;
   priceAmount: number;
-  trendingStatus: string;
+  trendingStatus?: string;
   partnerBonusAmount?: number;
   mainBonusAmount?: number;
   lostRefIncomeAmount?: number;
-  totalPrizeAmount: number;
-  investModelStatus: string;
-  investModelLevel: string;
-  unlockDate: null | string;
+  totalPrizeAmount?: number;
+  investModelStatus?: string;
+  investModelLevel?: string;
+  unlockDate?: null | string;
   createdAt: string;
+  defaultStatus: string;
 }
 
 export interface Transaction {
@@ -53,12 +54,12 @@ export interface Transaction {
 }
 
 export interface TopUsers {
-  id: string | number;
+  id?: string | number;
   name: string;
   username: string;
   investedAmount?: number;
   earnedAmount: number;
-  createdAt: string;
+  createdAt?: string;
 }
 
 export interface UpdatedUser {

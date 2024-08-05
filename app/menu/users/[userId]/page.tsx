@@ -7,6 +7,11 @@ import { FaUser } from "react-icons/fa";
 import HistoryItem from "@/components/Users/HistoryItem";
 import { groupTransactionsByDate } from "@/lib/groupTransactionsByDate";
 import { Lottery } from "@/components/Users/types";
+import Button from "@/components/ui/Button";
+import TopUpBalance from "@/components/Users/TopUpBalance";
+import { revalidatePath } from "next/cache";
+
+export const dynamic = 'no-store';
 
 interface Params {
   userId: string;
@@ -22,6 +27,7 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
   const groupedTransactions = groupTransactionsByDate(
     user ? user.transactions : []
   );
+
 
   return (
     <section className="w-full h-full flex justify-center">
@@ -67,6 +73,9 @@ const UserPage: FC<UserPageProps> = async ({ params }) => {
               <span className="text-gray-400 font-[400] text-lg">Reflink:</span>{" "}
               {user?.reflink}
             </div>
+
+            <TopUpBalance userId={params.userId}/>
+
           </div>
 
           <div>

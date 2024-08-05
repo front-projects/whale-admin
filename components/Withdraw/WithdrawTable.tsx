@@ -33,6 +33,7 @@ const WithdrawTable: React.FC = () => {
     setError(false);
     try {
       const fetchedWithdraw = await getWithdraw();
+      console.log(fetchedWithdraw)
       if (!fetchedWithdraw) {
         setError(true);
       } else {
@@ -165,6 +166,7 @@ const WithdrawTable: React.FC = () => {
               Ok
             </Button>
             <div
+              onClick={()=> setModal(null)}
               className="rounded-[8px] p-2 w-1/2 text-center border-2 
               cursor-pointer hover:bg-gray-400/20 shadow-xl "
             >

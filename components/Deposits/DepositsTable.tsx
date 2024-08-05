@@ -24,12 +24,11 @@ const DepositsTable: React.FC = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms));
+
     const fetchData = async () => {
       setLoading(true);
       try {
-        await delay(1000);
+
         const fetchedDeposits = await getDeposits();
         if (!fetchedDeposits) {
           setError(true);
@@ -44,20 +43,17 @@ const DepositsTable: React.FC = () => {
     fetchData();
   }, []);
 
-  const handleRowClick = (params: GridRowParams) => {
-    router.push(`/menu/users/${params.row.id}`);
-  };
 
   return (
     <div
-      className="w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full rounded-xl h-full"
+      className="w-full rounded-xl h-full"
       id="container-users"
     >
       <DataGrid
         rows={deposits}
         columns={columnsDeposits}
         localeText={{
-          noRowsLabel: error ? "Users upload error" : "No deposits",
+          noRowsLabel: error ? "Deposits upload error" : "No deposits",
         }}
         loading={loading}
         slots={{

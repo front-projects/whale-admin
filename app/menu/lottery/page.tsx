@@ -15,7 +15,7 @@ export default async function Lottery() {
             <p>Status</p>
             <p>Edit</p>
         </div>
-        {lottery.map((lot) => (
+        {lottery?.map((lot) => (
           <div key={lot.id}>
             <LotteryItem lottery={lot} />
           </div>

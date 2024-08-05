@@ -15,7 +15,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
   const [name, setName] = useState(lottery.naming);
   const [priceAmount, setpriceAmount] = useState(lottery.priceAmount);
   const [prizeAmount, setprizeAmount] = useState(lottery.totalPrizeAmount);
-  const [status, setStatus] = useState(lottery.investModelStatus);
+  const [status, setStatus] = useState(lottery.defaultStatus);
   const [updatedName, setUpdatedName] = useState(name);
   const [updatedpriceAmount, setUpdatedpriceAmount] = useState(priceAmount);
   const [updatedStatus, setUpdatedStatus] = useState(status);
@@ -39,12 +39,13 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
     e.stopPropagation();
     setLoading(true);
     const response = await updateLottery({
-      ...lottery,
       naming: updatedName,
       priceAmount: updatedpriceAmount,
       investModelStatus: updatedStatus,
       totalPrizeAmount: updatedprizeAmount,
-    });
+      defaultStatus: updatedStatus,
+      unlockDate: lottery.unlockDate
+    }, lottery.id);
     setLoading(false);
     if (response) {
       setName(updatedName);
@@ -53,6 +54,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
       setIsEditing(false);
       setprizeAmount(updatedprizeAmount);
     } else {
+      alert("Someting went wrong, try again")
       handleCloseEdit(e);
     }
   };
@@ -127,7 +129,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
             autoFocus
           />
         ) : (
-          prizeAmount.toFixed(2)
+          prizeAmount ? prizeAmount.toFixed(2) : 0
         )}
       </div>
       <div
@@ -158,7 +160,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
           status
         )}
 
-        {}
+        { }
       </div>
       {isEditing ? (
         !loading ? (
