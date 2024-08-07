@@ -39,6 +39,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
     e.stopPropagation();
     setLoading(true);
     const response = await updateLottery({
+      ...lottery,
       naming: updatedName,
       priceAmount: updatedpriceAmount,
       investModelStatus: updatedStatus,

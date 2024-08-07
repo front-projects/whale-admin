@@ -39,7 +39,7 @@ export async function login(
       }
     );
     if (response.data) {
-      await createSession(response.data);
+      await createSession(response.data.accessToken);
       return { message: "redirect" };
     } else if (!response.data) {
       return { message: "Incorrect password or login" };
