@@ -87,7 +87,7 @@ export default function Random() {
       >
         {submited ? (
           <div className="flex flex-col items-center">
-            <div className="flex flex-col gap-4 max-h-[60vh] max-w-[40vw] overflow-y-auto max-sm:max-w-[100vw]">
+            <div className="flex flex-col gap-4 max-sm:gap-4 max-h-[60vh] max-w-[40vw] overflow-y-auto max-sm:max-w-[100vw]">
               {submited.map((user: any) => (
                 <div>
                   {user.username} -{" "}
@@ -106,7 +106,7 @@ export default function Random() {
             </Button>
           </div>
         ) : (
-          <div className="w-full text-center flex flex-col gap-4">
+          <div className="w-full text-center flex flex-col gap-4 max-sm:gap-2">
             <p>Do you want to make random prizes?</p>
             <p>Count - {obj.count}</p>
             <p>
@@ -133,9 +133,9 @@ cursor-pointer hover:bg-gray-400/20 shadow-xl "
           </div>
         )}
       </Modal>
-      <div className="border-2 border-gray-500 rounded-xl w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full p-4 mt-4 flex items-center justify-center">
+      <div className="border-2 border-gray-500 rounded-xl w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full p-4 mt-4 flex items-center justify-center max-sm:text-[12px]">
         <form
-          className="flex flex-col gap-2 text-center    "
+          className="flex flex-col gap-2 text-center"
           onSubmit={openModal}
         >
           <label>Count:</label>

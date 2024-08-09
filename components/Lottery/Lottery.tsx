@@ -91,7 +91,7 @@ export default function LotteryItem({ lottery }: { lottery: Lottery }) {
   return (
     <div
       onClick={handleEdit}
-      className="w-full border-2 border-gray-600 p-2 rounded-xl grid grid-cols-5 gap-2 items-center px-6 max-sm:px-2 text-center max-sm:text-[14px] cursor-pointer hover:bg-gray-400/40"
+      className="w-fullborder-2 border-gray-600 p-2 rounded-xl grid grid-cols-5 gap-2 items-center px-6 max-sm:px-2 text-center max-sm:text-[14px] cursor-pointer hover:bg-gray-400/40"
     >
       <div className="w-full">
         {isEditing ? (
