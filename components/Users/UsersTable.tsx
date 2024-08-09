@@ -8,6 +8,7 @@ import { tableStyle } from "./tableStyle";
 import { HashLoader } from "react-spinners";
 import { useRouter } from "next/navigation";
 import { columnsUsers } from "./columnsUsers";
+import Button from "../ui/Button";
 
 const CustomLoadingOverlay = () => {
   return (
@@ -25,13 +26,12 @@ const UsersTable: React.FC = () => {
   const [pageSize, setPageSize] = useState<number>(100);
   const [rowCount, setRowCount] = useState<number>(0);
   const router = useRouter();
+  const [search, setSearch] = useState<any>();
 
   useEffect(() => {
-
     const fetchData = async () => {
       setLoading(true);
       try {
-
         const fetchedUsers = await getUsers({ page: page, pageSize: pageSize });
         if (!fetchedUsers) {
           setError(true);
@@ -54,37 +54,52 @@ const UsersTable: React.FC = () => {
     router.push(`/menu/users/${params.row.id}`);
   };
 
+  const submitSearch = () => {
+    if (search) {
+      router.push(`/menu/users/${search}`);
+    }
+  };
+
   return (
-    <div
-      className="w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full rounded-xl h-full"
-      id="container-users"
-    >
-      <DataGrid
-        rows={users}
-        columns={columnsUsers}
-        rowCount={rowCount}
-        localeText={{
-          noRowsLabel: error ? "Users upload error" : "No users",
-        }}
-        loading={loading}
-        slots={{
-          loadingOverlay: CustomLoadingOverlay,
-        }}
-        disableRowSelectionOnClick={true}
-        disableColumnResize={true}
-        disableColumnMenu={true}
-        pagination
-        autosizeOnMount={true}
-        paginationMode="server"
-        paginationModel={{ page, pageSize }}
-        onPaginationModelChange={(params) => {
-          handlePageChange(params);
-        }}
-        sx={tableStyle}
-        onRowClick={handleRowClick}
-        disableVirtualization={true}
-      />
-    </div>
+    <>
+      <div
+        className="w-1/2 max-xl:w-2/3 max-lg:w-[80%] max-sm:w-full rounded-xl h-full flex flex-col"
+        id="container-users"
+      >
+        <div className="flex gap-2 mb-4 w-full items-center justify-center px-2">
+          <input
+            placeholder="Search..."
+            onChange={(event) => setSearch(event.target.value)}
+          />
+          <Button onClick={submitSearch}>Search</Button>
+        </div>
+        <DataGrid
+          rows={users}
+          columns={columnsUsers}
+          rowCount={rowCount}
+          localeText={{
+            noRowsLabel: error ? "Users upload error" : "No users",
+          }}
+          loading={loading}
+          slots={{
+            loadingOverlay: CustomLoadingOverlay,
+          }}
+          disableRowSelectionOnClick={true}
+          disableColumnResize={true}
+          disableColumnMenu={true}
+          pagination
+          autosizeOnMount={true}
+          paginationMode="server"
+          paginationModel={{ page, pageSize }}
+          onPaginationModelChange={(params) => {
+            handlePageChange(params);
+          }}
+          sx={tableStyle}
+          onRowClick={handleRowClick}
+          disableVirtualization={true}
+        />
+      </div>
+    </>
   );
 };
 

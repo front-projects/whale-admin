@@ -42,10 +42,8 @@ export const getUser = async (id: string | number) => {
         Authorization: `Bearer ${TOKEN}`,
       },
     });
-
     return response.data;
   } catch (error) {
-
     return undefined;
   }
 };
@@ -57,6 +55,21 @@ function delayedPromise() {
     }, 1500);
   });
 }
+
+export const getUserByLogin = async (login: string | number) => {
+  try {
+    const TOKEN = cookies().get("accessToken")?.value;
+    const response = await axios.get(API_URL + `users/login/${login}`, {
+      headers: {
+        Authorization: `Bearer ${TOKEN}`,
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    return undefined;
+  }
+};
 
 export const getTopUsers = async (): Promise<TopUsers[] | undefined> => {
   try {
@@ -87,14 +100,21 @@ export const getLottery = async (): Promise<Lottery[] | undefined> => {
   }
 };
 
-export const updateTopUser = async (user: TopUsers, userId: string | number) => {
+export const updateTopUser = async (
+  user: TopUsers,
+  userId: string | number
+) => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
-    const response = await axios.put(API_URL + `details/settop/${userId}`, user, {
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    });
+    const response = await axios.put(
+      API_URL + `details/settop/${userId}`,
+      user,
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }
+    );
     if (response.status == 200) {
       return true;
     }
@@ -103,14 +123,21 @@ export const updateTopUser = async (user: TopUsers, userId: string | number) => 
   }
 };
 
-export const updateLottery = async (lottery: any, lotteryId: string | number | undefined) => {
+export const updateLottery = async (
+  lottery: any,
+  lotteryId: string | number | undefined
+) => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
-    const response = await axios.put(API_URL + `details/tables/${lotteryId}`, lottery, {
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    });
+    const response = await axios.put(
+      API_URL + `details/tables/${lotteryId}`,
+      lottery,
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }
+    );
     if (response.status == 200) {
       return true;
     }
@@ -165,24 +192,27 @@ export const withdrawStatusUpdate = async (
   }
 };
 
-
 export const createTransaction = async (transaction: any, userId: any) => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
-    const response = await axios.post(API_URL + `incomes/add/${userId}`, transaction, {
-      headers: {
-        Authorization: `Bearer ${TOKEN}`,
-      },
-    });
+    const response = await axios.post(
+      API_URL + `incomes/add/${userId}`,
+      transaction,
+      {
+        headers: {
+          Authorization: `Bearer ${TOKEN}`,
+        },
+      }
+    );
     if (response.status == 200) {
       return true;
     }
   } catch (error) {
     return false;
   }
-}
+};
 
-export const randomLottery = async (obj:any) =>{
+export const randomLottery = async (obj: any) => {
   try {
     const TOKEN = cookies().get("accessToken")?.value;
     const response = await axios.post(API_URL + `incomes/generate/count`, obj, {
@@ -196,4 +226,4 @@ export const randomLottery = async (obj:any) =>{
   } catch (error) {
     return false;
   }
-}
+};
